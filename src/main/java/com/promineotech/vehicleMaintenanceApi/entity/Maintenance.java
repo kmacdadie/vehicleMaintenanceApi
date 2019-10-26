@@ -20,7 +20,7 @@ public class Maintenance {
 	private Long id;
 	private String discription;
 	private double invoiceAmmount;
-	private List<shopTask> shopTasks;
+	private List<ShopTask> shopTasks;
 	private MaintenanceStatus status;
 	private Set<Vehicle> vehicles;
 	
@@ -37,11 +37,11 @@ public class Maintenance {
 		this.id = id;
 	}
 	
-	public List<shopTask> getShopTasks() {
+	public List<ShopTask> getShopTasks() {
 		return shopTasks;
 	}
 
-	public void setShopTasks(List<shopTask> shopTasks) {
+	public void setShopTasks(List<ShopTask> shopTasks) {
 		this.shopTasks = shopTasks;
 	}
 	

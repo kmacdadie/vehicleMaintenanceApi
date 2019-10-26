@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class shopTask {
+public class ShopTask {
 	
 	private Long id;
 	private List<String> shopTask = new ArrayList<String>();
