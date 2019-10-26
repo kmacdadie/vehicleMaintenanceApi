@@ -1,6 +1,6 @@
 package com.promineotech.vehicleMaintenanceApi.util;
 
-public enum ScheduleStatus {
+public enum MaintenanceStatus {
 	
 	COMPLETE,
 	SCHEDULED,

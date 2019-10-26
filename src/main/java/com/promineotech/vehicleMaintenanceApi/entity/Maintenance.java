@@ -1,5 +1,6 @@
 package com.promineotech.vehicleMaintenanceApi.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,17 +12,16 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.promineotech.vehicleMaintenanceApi.util.ScheduleStatus;
+import com.promineotech.vehicleMaintenanceApi.util.MaintenanceStatus;
 
 @Entity
-public class Schedule {
+public class Maintenance {
 	
 	private Long id;
-	private String oneMonth;
-	private String threeMonth;
-	private String sixMonth;
+	private String discription;
 	private double invoiceAmmount;
-	private ScheduleStatus status;
+	private List<shopTask> shopTasks;
+	private MaintenanceStatus status;
 	private Set<Vehicle> vehicles;
 	
 	@JsonIgnore
@@ -37,28 +37,20 @@ public class Schedule {
 		this.id = id;
 	}
 	
-	public String getOneMonth() {
-		return oneMonth;
+	public List<shopTask> getShopTasks() {
+		return shopTasks;
+	}
+
+	public void setShopTasks(List<shopTask> shopTasks) {
+		this.shopTasks = shopTasks;
 	}
 	
-	public void setOneMonth(String oneMonth) {
-		this.oneMonth = oneMonth;
+	public String getDiscription() {
+		return discription;
 	}
-	
-	public String getThreeMonth() {
-		return threeMonth;
-	}
-	
-	public void setThreeMonth(String threeMonth) {
-		this.threeMonth = threeMonth;
-	}
-	
-	public String getSixMonth() {
-		return sixMonth;
-	}
-	
-	public void setSixMonth(String sixMonth) {
-		this.sixMonth = sixMonth;
+
+	public void setDiscription(String discription) {
+		this.discription = discription;
 	}
 	
 	public double getInvoiceAmmount() {
@@ -69,6 +61,7 @@ public class Schedule {
 		this.invoiceAmmount = invoiceAmmount;
 	}
 	
+//	this @ManyToMany  throws an error when launching spring-boot for some reason.
 	@ManyToMany(mappedBy = "vehicles")
 	public Set<Vehicle> getVehicles() {
 		return vehicles;
@@ -88,12 +81,12 @@ public class Schedule {
 		this.customer = customer;
 	}
 
-	public ScheduleStatus getStatus() {
+	public MaintenanceStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(ScheduleStatus status) {
+	public void setStatus(MaintenanceStatus status) {
 		this.status = status;
 	}
-	
+
 }

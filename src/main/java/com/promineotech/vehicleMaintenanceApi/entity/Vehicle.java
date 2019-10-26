@@ -23,7 +23,7 @@ public class Vehicle {
 	private Long mileage;
 	
 	@JsonIgnore
-	private Set<Schedule> schedules;
+	private Set<Maintenance> schedules;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,14 +68,14 @@ public class Vehicle {
 	}
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "vehicle_Oder",
+	@JoinTable(name = "vehicle_schedule",
 			joinColumns = @JoinColumn(name = "scheduleId", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "vehicleId", referencedColumnName = "id"))
-	public Set<Schedule> getSchedules() {
+	public Set<Maintenance> getSchedules() {
 		return schedules;
 	}
 
-	public void setSchedules(Set<Schedule> schedules) {
+	public void setSchedules(Set<Maintenance> schedules) {
 		this.schedules = schedules;
 	}
 	
