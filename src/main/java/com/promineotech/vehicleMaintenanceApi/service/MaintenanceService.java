@@ -30,10 +30,10 @@ public class MaintenanceService {
 	@Autowired
 	VehicleRepository vehicleRepo;
 	
-	public Maintenance createNewMaintenance(Set<Long> vehicleIds, Long customerId) throws Exception {
+	public Maintenance generateNewMaintenance(Set<Long> vehicleIds, Long customerId) throws Exception {
 		try {
 			Customer customer = customerRepo.findOne(customerId);
-			Maintenance maintenance = initializeNewMaintenance(vehicleIds, customer); 
+			Maintenance maintenance = generateNewMaintenance(vehicleIds, customer); 
 			return repo.save(maintenance);
 		} catch (Exception e) {
 			logger.error("Exception occured while trying to create a new service for customer: " + customerId, e);
@@ -62,11 +62,12 @@ public class MaintenanceService {
 			throw new Exception("Unable to update schedule.");
 		}
 	}
-	private Maintenance initializeNewMaintenance(Set<Long> vehicleIds, Customer customer) {
+	private Maintenance generateNewMaintenance(Set<Long> vehicleIds, Customer customer) {
 		Maintenance maintenance = new Maintenance();
 		maintenance.setVehicles(convertToVehicleSet(vehicleRepo.findAll(vehicleIds)));
 		maintenance.setCustomer(customer);
-		//schedule.setInvoiceAmmount(invoiceAmmount);
+		maintenance.setDiscription();
+		maintenance.setInvoiceAmmount();
 		maintenance.setStatus(MaintenanceStatus.SCHEDULED);
 		return maintenance;
 	}

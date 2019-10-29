@@ -1,18 +1,24 @@
 package com.promineotech.vehicleMaintenanceApi.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ShopTask {
 	
 	private Long id;
-	private List<String> shopTask = new ArrayList<String>();
+	private String taskName;
+	private double price;
+	private LocalDate date = LocalDate.now();
 	
-	
+	@JsonIgnore
+	private Maintenance maintenance;
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
@@ -21,14 +27,39 @@ public class ShopTask {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getTaskName() {
+		return taskName;
+	}
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	
+	@OneToOne(mappedBy = "shopTask")
+	public Maintenance getMaintenance() {
+		return maintenance;
+	}
+
+	public void setMaintenance(Maintenance maintenance) {
+		this.maintenance = maintenance;
 	}	
-
-	public List<String> getShopTask() {
-		return shopTask;
-	}
-
-	public void setShopTask(List<String> shopTask) {
-		this.shopTask = shopTask;
-	}
 
 }

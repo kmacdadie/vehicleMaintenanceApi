@@ -23,9 +23,9 @@ public class MaintenanceController {
 	private MaintenanceService service;
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Object> createMaintenance(@RequestBody Set<Long> vehicleIds,@PathVariable Long id) {
+	public ResponseEntity<Object> createSchedule(@RequestBody Set<Long> vehicleIds,@PathVariable Long id) {
 		try {
-			return new ResponseEntity<Object>(service.createNewMaintenance(vehicleIds, id), HttpStatus.CREATED);
+			return new ResponseEntity<Object>(service.generateNewMaintenance(vehicleIds, id), HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e, HttpStatus.BAD_REQUEST);
 		}
