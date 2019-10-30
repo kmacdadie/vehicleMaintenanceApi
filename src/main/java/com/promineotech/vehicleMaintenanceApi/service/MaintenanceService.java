@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.promineotech.vehicleMaintenanceApi.entity.Customer;
 import com.promineotech.vehicleMaintenanceApi.entity.Maintenance;
 import com.promineotech.vehicleMaintenanceApi.entity.Vehicle;
+import com.promineotech.vehicleMaintenanceApi.entity.ShopTask;
 import com.promineotech.vehicleMaintenanceApi.repository.CustomerRepository;
 import com.promineotech.vehicleMaintenanceApi.repository.MaintenanceRepository;
 import com.promineotech.vehicleMaintenanceApi.repository.VehicleRepository;
@@ -66,8 +67,6 @@ public class MaintenanceService {
 		Maintenance maintenance = new Maintenance();
 		maintenance.setVehicles(convertToVehicleSet(vehicleRepo.findAll(vehicleIds)));
 		maintenance.setCustomer(customer);
-		maintenance.setDiscription();
-		maintenance.setInvoiceAmmount();
 		maintenance.setStatus(MaintenanceStatus.SCHEDULED);
 		return maintenance;
 	}

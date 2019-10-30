@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ShopTask {
 	
 	private Long id;
-	private String taskName;
+	private String discription;
 	private double price;
 	private LocalDate date = LocalDate.now();
 	
@@ -29,12 +29,12 @@ public class ShopTask {
 		this.id = id;
 	}
 
-	public String getTaskName() {
-		return taskName;
+	public String getdiscription() {
+		return discription;
 	}
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
+	public void setdiscription(String discription) {
+		this.discription = discription;
 	}
 
 	public double getPrice() {
