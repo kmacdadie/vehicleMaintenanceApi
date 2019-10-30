@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+//import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -53,7 +53,7 @@ public class ShopTask {
 		this.date = date;
 	}
 	
-	@OneToOne(mappedBy = "shopTask")
+	//@OneToOne(mappedBy = "shopTask")
 	public Maintenance getMaintenance() {
 		return maintenance;
 	}

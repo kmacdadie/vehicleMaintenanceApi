@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.promineotech.vehicleMaintenanceApi.entity.Customer;
 import com.promineotech.vehicleMaintenanceApi.entity.Maintenance;
 import com.promineotech.vehicleMaintenanceApi.entity.Vehicle;
-import com.promineotech.vehicleMaintenanceApi.entity.ShopTask;
 import com.promineotech.vehicleMaintenanceApi.repository.CustomerRepository;
 import com.promineotech.vehicleMaintenanceApi.repository.MaintenanceRepository;
 import com.promineotech.vehicleMaintenanceApi.repository.VehicleRepository;
@@ -42,7 +41,7 @@ public class MaintenanceService {
 		}
 	}
 	
-	public Maintenance cancelSchedule(Long maintenanceId) throws Exception {
+	public Maintenance cancelMaintenance(Long maintenanceId) throws Exception {
 		try {
 			Maintenance maintenance = repo.findOne(maintenanceId);
 			maintenance.setStatus(MaintenanceStatus.CANCELED);
@@ -79,7 +78,7 @@ public class MaintenanceService {
 		return set;
 	}
 	
-	public Maintenance updateSchedule(Long id, Maintenance maintenance) {
+	public Maintenance updateMaintenance(Long id, Maintenance maintenance) {
 		Maintenance foundMaintenance = repo.findOne(id);
 		if (foundMaintenance != null) {
 			foundMaintenance.setShopTasks(maintenance.getShopTasks());
