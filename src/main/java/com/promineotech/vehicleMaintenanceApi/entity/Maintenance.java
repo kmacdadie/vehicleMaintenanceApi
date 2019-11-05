@@ -47,7 +47,7 @@ public class Maintenance {
 		this.shopTasks = shopTasks;
 	}
 	
-	@ManyToMany(mappedBy = "vehicles")
+	@ManyToMany(mappedBy = "maintenances")
 	public Set<Vehicle> getVehicles() {
 		return vehicles;
 	}
