@@ -65,7 +65,6 @@ public class MaintenanceService {
 	private Maintenance generateNewMaintenance(Set<Long> vehicleIds, Customer customer) {
 		Maintenance maintenance = new Maintenance();
 		maintenance.setVehicles(convertToVehicleSet(vehicleRepo.findAll(vehicleIds)));
-		maintenance.setCustomer(customer);
 		maintenance.setStatus(MaintenanceStatus.SCHEDULED);
 		return maintenance;
 	}
