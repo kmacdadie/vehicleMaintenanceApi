@@ -19,7 +19,7 @@ public class Customer {
 	private String phoneNumber;
 	private String email;
 	private MaintenanceLevel level;
-	private Set<Maintenance> schedules;
+	private Set<Maintenance> maintenances;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -72,12 +72,12 @@ public class Customer {
 	}
 	
 	@OneToMany(mappedBy = "customer")
-	public Set<Maintenance> getSchedules() {
-		return schedules;
+	public Set<Maintenance> getMaintenances() {
+		return maintenances;
 	}
 	
-	public void setSchedules(Set<Maintenance> schedules) {
-		this.schedules = schedules;
+	public void setMaintenances(Set<Maintenance> maintenances) {
+		this.maintenances = maintenances;
 	}
 
 }

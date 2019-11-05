@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,6 +35,8 @@ public class Maintenance {
 		this.id = id;
 	}
 	
+	@ManyToOne
+	@JoinColumn(name = "shopTasks")
 	public List<ShopTask> getShopTasks() {
 		return shopTasks;
 	}
@@ -43,8 +45,7 @@ public class Maintenance {
 		this.shopTasks = shopTasks;
 	}
 	
-//	this @ManyToMany  throws an error when launching spring-boot for some reason.
-	//@ManyToMany(mappedBy = "vehicles")
+	@ManyToMany(mappedBy = "vehicles")
 	public Set<Vehicle> getVehicles() {
 		return vehicles;
 	}

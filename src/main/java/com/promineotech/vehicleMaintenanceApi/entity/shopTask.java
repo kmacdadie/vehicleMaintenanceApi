@@ -1,11 +1,12 @@
 package com.promineotech.vehicleMaintenanceApi.entity;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,7 +18,7 @@ public class ShopTask {
 	private LocalDate date = LocalDate.now();
 	
 	@JsonIgnore
-	private Maintenance maintenance;
+	private Set<Maintenance> maintenances;
 		
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,11 +30,11 @@ public class ShopTask {
 		this.id = id;
 	}
 
-	public String getdiscription() {
+	public String getDiscription() {
 		return discription;
 	}
 
-	public void setdiscription(String discription) {
+	public void setDiscription(String discription) {
 		this.discription = discription;
 	}
 
@@ -53,13 +54,13 @@ public class ShopTask {
 		this.date = date;
 	}
 	
-	//@OneToOne(mappedBy = "shopTask")
-	public Maintenance getMaintenance() {
-		return maintenance;
+	@OneToOne(mappedBy = "shopTasks")
+	public Set<Maintenance> getMaintenances() {
+		return maintenances;
 	}
 
-	public void setMaintenance(Maintenance maintenance) {
-		this.maintenance = maintenance;
+	public void setMaintenances(Set<Maintenance> maintenances) {
+		this.maintenances = maintenances;
 	}	
 
 }
